@@ -8,13 +8,13 @@ function Sidebar({ recomendaciones }) {
        // window.location.href=e.target.children[0].innerHTML}
   return (
     <div className="col-md-4 col-4">
-      <h5>Top animes</h5>
+      <h5 style={{fontFamily: '"Bebas Neue", cursive'}}>Top animes</h5>
 
       <div className="row">
         <ul className="list-group">
           {recomendaciones.map((anime) => {
             return (
-              <div key={anime.entry.title} onClick={(e)=>{redirec(e)}} >
+              <div className="mb-1" key={anime.entry.title} onClick={(e)=>{redirec(e)}} style={{cursor: 'pointer'}}>
                 <li className="list-group-item d-flex justify-content-between align-items-center">
                 {anime.entry.title} 
                 <div hidden>{anime.entry.url} </div>

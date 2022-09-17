@@ -29,14 +29,29 @@ function MainContent({ setSearch, getSearch, getAnimes, animes }) {
           return (
             <div className="col-md-6 col-lg-4 col-sm-12 mb-3" key={e.title}>
               <div className="card">
-                <div className="card-body">
-                  <h6 className="card-subtitle text-muted">{e.title}</h6>
+                <div className="card-header ">
+                  <h6 className="card-subtitle text-muted text-center">
+                    {e.title}
+                  </h6>
                 </div>
-                <img className="card-img-top" src={e.images.jpg.large_image_url} alt="Cardimag" />
-                <div className="card-body">
-                  <p className="card-text">{e.synopsis.substring(0, 48)}</p>
+                <div className="overflow1">
+                  <img
+                    className="card-img-top"
+                    src={e.images.jpg.large_image_url}
+                    alt="Cardimag"
+                  />
                 </div>
-                <div className="card-footer text-muted text-center">Episodes: {e.episodes}</div>
+
+                <div className="card-body">
+                  <p className="card-text">
+                    {e.synopsis != null
+                      ? e.synopsis.substring(0, 48) + "...."
+                      : "no description...."}
+                  </p>
+                </div>
+                <div className="card-footer text-muted text-center">
+                  Episodes: {e.episodes}
+                </div>
               </div>
             </div>
           );
