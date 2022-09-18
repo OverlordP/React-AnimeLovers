@@ -1,64 +1,32 @@
-
-import Sidebar from "./components/Sidebar";
-import MainContent from "./components/MainContent";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import { useState, useEffect } from "react";
+import Home from "./Pages/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import NoFound from "./Pages/NoFound";
+import Navbar from "./components/Navbar";
+import Description from "./Pages/Description";
 
 function App() {
 
-  const [animeRec, setanimeRec] = useState([])
-
-  const [searchAnime, setsearchAnime] = useState("")
-
-  const [animes, setanimes] = useState([])
-
-  const getAnimeReco = async ()=>{
-
-    const data = await fetch("https://api.jikan.moe/v4/anime/1/recommendations").then(res => res.json())
-    const data2 = await data.data.slice(0,15)
-    setanimeRec(data2)
-
-  }
-const onsubmit =async (e)=>{
-  e.preventDefault()
-  getAnimes(searchAnime)
- 
-}
-
-  const getAnimes = async (busqueda)=>{
-    try{
-      const data = await fetch(`https://api.jikan.moe/v4/anime?q=${busqueda}&limit=9`).then(res=>res.json())
-      const animedata  = await data.data
-      setanimes(animedata)
-      return animedata
-    }
-    catch(err){
-      alert("Hello! I am an alert box!!");
-    }
-
-  }
-  
-	useEffect(() => {
-		getAnimeReco();
-	}, []);
-
   return (
-    <div className="App">
-      <Navbar/>
-      <br/>
-      <div className="container ">
-        <div className="row ">
-          <Sidebar recomendaciones={animeRec} />
-          <MainContent setSearch={setsearchAnime} getSearch={searchAnime} getAnimes={onsubmit} animes={animes}/>
-        </div>
-      </div>
+    <BrowserRouter>
 
+    <Navbar/>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home/> }
+        />
+                <Route
+          path="/review/:id"
+          element={<Description /> }
+        />
+        <Route
+          path="*"
+          element={ <div className="container text-center mt-5"><NoFound/> </div>  }
+        />
 
-     <div className="mt-3" ><Footer/></div>
-      
-    </div>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -6,14 +7,15 @@ function Navbar() {
       {" "}
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid align-bottom">
-          <a className="navbar-brand " href="/">
+          <NavLink to="/">
             <h2
               className="text-bottom"
               style={{ fontFamily: '"Bebas Neue", cursive' }}
             >
               ANIME LOVERS
             </h2>
-          </a>
+          </NavLink>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -29,10 +31,7 @@ function Navbar() {
             className="collapse navbar-collapse justify-content-end "
             id="navbarColor01"
           >
-
-         
             <div className="px-1">
-              
               <a
                 className="btn btn-warning"
                 data-bs-toggle="offcanvas"
@@ -55,9 +54,6 @@ function Navbar() {
                 Signup
               </a>
             </div>
-              
-           
-
           </div>
         </div>
       </nav>

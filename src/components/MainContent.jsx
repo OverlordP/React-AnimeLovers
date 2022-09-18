@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 
 function MainContent({ setSearch, getSearch, getAnimes, animes }) {
   return (
@@ -50,7 +52,8 @@ function MainContent({ setSearch, getSearch, getAnimes, animes }) {
                   </p>
                 </div>
                 <div className="card-footer text-muted text-center">
-                  Episodes: {e.episodes}
+                 <p> Episodes: {e.episodes}</p>
+                 <NavLink to={"/review/"+e.mal_id}> mas..</NavLink>
                 </div>
               </div>
             </div>
